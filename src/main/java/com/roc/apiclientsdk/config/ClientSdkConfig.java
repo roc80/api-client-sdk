@@ -7,6 +7,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 
 import com.roc.apiclientsdk.client.ApiClient;
+import com.roc.apiclientsdk.server.ApiServer;
 
 import lombok.Data;
 
@@ -29,6 +30,12 @@ public class ClientSdkConfig {
     @ConditionalOnMissingBean
     public ApiClient apiClient() {
         return new ApiClient(accessKey, secretKey);
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public ApiServer apiServer() {
+        return new ApiServer(accessKey, secretKey);
     }
 
 }
