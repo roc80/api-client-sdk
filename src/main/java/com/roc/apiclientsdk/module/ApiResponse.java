@@ -1,4 +1,4 @@
-package com.roc.apiclientsdk.module.response;
+package com.roc.apiclientsdk.module;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
@@ -24,5 +24,9 @@ public class ApiResponse {
 
     public static ApiResponse success(Object data) {
         return new ApiResponse(0, "OK", data);
+    }
+
+    public boolean isSuccess() {
+        return this.code == 0;
     }
 }

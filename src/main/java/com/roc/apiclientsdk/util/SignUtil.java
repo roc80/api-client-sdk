@@ -2,7 +2,6 @@ package com.roc.apiclientsdk.util;
 
 import cn.hutool.crypto.digest.DigestAlgorithm;
 import cn.hutool.crypto.digest.DigestUtil;
-import lombok.NonNull;
 
 /**
  * @author lipeng

@@ -8,7 +8,6 @@ import com.roc.apiclientsdk.module.User;
 import com.roc.apiclientsdk.util.SignUtil;
 
 import cn.hutool.core.util.RandomUtil;
-import cn.hutool.crypto.digest.DigestAlgorithm;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.json.JSONUtil;
@@ -20,15 +19,17 @@ import lombok.AllArgsConstructor;
  */
 @AllArgsConstructor
 public class ApiClient {
+    private static final String GATEWAY_ENV = "http://localhost:9090";
     private String accessKey;
     private String secretKey;
 
     /**
      * todo 根据url来调用接口
      */
+    @SuppressWarnings({"unused"})
     public String getName(User user) {
         String bodyJson = JSONUtil.toJsonStr(user);
-        HttpResponse httpResponse = HttpRequest.post("http://localhost:8010/api/name")
+        HttpResponse httpResponse = HttpRequest.post(GATEWAY_ENV + "/api/name")
                 .addHeaders(getHeaderMap(bodyJson))
                 .body(bodyJson)
                 .execute();
